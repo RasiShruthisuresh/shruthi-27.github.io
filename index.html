@@ -7,25 +7,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --bg:       #fdf6f9;
-    --bg2:      #faf0f5;
-    --bg3:      #f5e8f0;
-    --card:     rgba(255,255,255,0.55);
-    --card-solid: #fff8fb;
-    --border:   rgba(220,160,190,0.35);
-    --border-bright: rgba(210,120,165,0.6);
-    --pink:     #e8789a;
-    --pink2:    #f4a6bf;
-    --lilac:    #c9a0dc;
-    --lilac2:   #e0c4f0;
-    --mauve:    #b57a9e;
-    --rose:     #e05080;
-    --blush:    #f9d4e2;
-    --text:     #3d2233;
-    --text-muted: #7a5068;
-    --text-dim: #b09aaa;
+    --bg:       #0d1117;
+    --bg2:      #111820;
+    --bg3:      #161e28;
+    --card:     rgba(22,30,42,0.85);
+    --card-solid: #161e28;
+    --border:   rgba(180,150,90,0.18);
+    --border-bright: rgba(200,170,100,0.5);
+    --pink:     #c8a855;
+    --pink2:    #e0c070;
+    --lilac:    #8fafd4;
+    --lilac2:   #b8d0e8;
+    --mauve:    #7a9ec0;
+    --rose:     #d4943a;
+    --blush:    #1e2836;
+    --text:     #eaf0f8;
+    --text-muted: #a0b4cc;
+    --text-dim: #5a7090;
     --white:    #fff;
-    --gold:     #d4a0b5;
+    --gold:     #c8a855;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -41,24 +41,22 @@
     overflow-x: hidden;
   }
 
-  /* ── DREAMY BG BLOBS ── */
   body::before {
     content: '';
     position: fixed; inset: 0; z-index: 0;
     pointer-events: none;
     background:
-      radial-gradient(ellipse at 10% 15%, rgba(232,120,154,0.18) 0%, transparent 45%),
-      radial-gradient(ellipse at 88% 10%, rgba(201,160,220,0.18) 0%, transparent 40%),
-      radial-gradient(ellipse at 75% 85%, rgba(244,166,191,0.16) 0%, transparent 45%),
-      radial-gradient(ellipse at 20% 80%, rgba(224,192,240,0.15) 0%, transparent 40%),
-      radial-gradient(ellipse at 50% 50%, rgba(253,246,249,0) 0%, rgba(253,246,249,0.5) 100%);
+      radial-gradient(ellipse at 10% 15%, rgba(143,175,212,0.07) 0%, transparent 45%),
+      radial-gradient(ellipse at 88% 10%, rgba(200,168,85,0.07) 0%, transparent 40%),
+      radial-gradient(ellipse at 75% 85%, rgba(143,175,212,0.06) 0%, transparent 45%),
+      radial-gradient(ellipse at 20% 80%, rgba(200,168,85,0.05) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 50%, rgba(13,17,23,0) 0%, rgba(13,17,23,0.6) 100%);
   }
 
-  /* floating petals */
   .petal {
     position: fixed;
-    width: 10px; height: 10px;
-    border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%;
+    width: 3px; height: 3px;
+    border-radius: 50%;
     opacity: 0;
     pointer-events: none;
     z-index: 0;
@@ -71,16 +69,15 @@
     100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
   }
 
-  /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(255,245,250,0.72);
+    background: rgba(10,14,20,0.88);
     backdrop-filter: blur(20px) saturate(1.4);
     -webkit-backdrop-filter: blur(20px) saturate(1.4);
     border-bottom: 1px solid var(--border);
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 2rem; height: 62px;
-    box-shadow: 0 2px 24px rgba(232,120,154,0.07);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.35);
   }
 
   .nav-logo {
@@ -110,7 +107,7 @@
   .nav-links a:hover, .nav-links a.active {
     color: var(--pink);
     border-color: var(--border);
-    background: rgba(232,120,154,0.07);
+    background: rgba(200,168,85,0.08);
   }
 
   .hamburger {
@@ -119,10 +116,8 @@
   }
   .hamburger span { width: 22px; height: 1.5px; background: var(--pink); display: block; transition: all 0.3s; }
 
-  /* ── SECTIONS ── */
   section { position: relative; z-index: 1; }
 
-  /* ── HERO ── */
   #home {
     min-height: 100vh;
     display: flex; flex-direction: column;
@@ -132,7 +127,6 @@
     position: relative; overflow: hidden;
   }
 
-  /* soft ring */
   #home::before {
     content: '';
     position: absolute;
@@ -158,7 +152,6 @@
     50%       { transform: translate(-50%,-50%) scale(1.06); opacity: 0.2; }
   }
 
-  /* photo ring */
   .hero-photo-wrap {
     position: relative;
     width: 180px; height: 180px;
@@ -168,7 +161,7 @@
   .hero-photo-wrap::before {
     content: '';
     position: absolute; inset: -6px;
-    background: conic-gradient(from 0deg, var(--pink), var(--lilac2), var(--pink2), var(--lilac), var(--pink));
+    background: conic-gradient(from 0deg, var(--gold), var(--lilac2), var(--pink2), var(--lilac), var(--gold));
     border-radius: 50%;
     animation: rotateBorder 9s linear infinite;
     filter: blur(1px);
@@ -186,7 +179,7 @@
     width: 100%; height: 100%;
     border-radius: 50%;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--blush), var(--lilac2));
+    background: linear-gradient(135deg, #1e2836, #2a3848);
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
   }
@@ -255,7 +248,7 @@
     background: linear-gradient(to right, transparent, var(--border-bright));
   }
   .divider-ornament::after { background: linear-gradient(to left, transparent, var(--border-bright)); }
-  .divider-ornament span { color: var(--pink); font-size: 1.1rem; }
+  .divider-ornament span { color: var(--gold); font-size: 1.1rem; }
 
   .hero-desc {
     font-size: 1.05rem; font-style: italic;
@@ -270,7 +263,6 @@
     animation: fadeUp 1s 0.9s ease both; opacity: 0;
   }
 
-  /* ── BUTTONS ── */
   .btn-primary {
     font-family: 'Raleway', sans-serif;
     font-size: 0.73rem; font-weight: 600;
@@ -290,27 +282,6 @@
     background: linear-gradient(135deg, var(--rose), var(--mauve));
   }
 
-  .btn-secondary {
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.73rem; font-weight: 600;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--pink);
-    background: rgba(255,255,255,0.55);
-    backdrop-filter: blur(10px);
-    padding: 0.78rem 2.2rem;
-    border: 1.5px solid var(--border-bright); border-radius: 30px;
-    cursor: pointer; text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s;
-  }
-  .btn-secondary:hover {
-    background: rgba(232,120,154,0.1);
-    border-color: var(--pink);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(232,120,154,0.2);
-  }
-
-  /* ── SECTION SHARED ── */
   .section-inner { max-width: 1000px; margin: 0 auto; padding: 6rem 2rem; }
 
   .section-heading {
@@ -338,21 +309,10 @@
     background: linear-gradient(to right, transparent, var(--border-bright));
   }
   .gothic-rule::after { background: linear-gradient(to left, transparent, var(--border-bright)); }
-  .gothic-rule span { color: var(--pink); font-size: 1.1rem; }
+  .gothic-rule span { color: var(--gold); font-size: 1.1rem; }
 
-  /* ── GLASS CARD MIXIN ── */
-  .glass {
-    background: rgba(255,255,255,0.5);
-    backdrop-filter: blur(16px) saturate(1.3);
-    -webkit-backdrop-filter: blur(16px) saturate(1.3);
-    border: 1px solid rgba(255,255,255,0.75);
-    box-shadow: 0 4px 24px rgba(200,100,150,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
-    border-radius: 20px;
-  }
-
-  /* ── ABOUT ── */
   #about {
-    background: linear-gradient(160deg, #fff8fb 0%, #f5eaf4 100%);
+    background: linear-gradient(160deg, #0f161f 0%, #111a26 100%);
     border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
   }
 
@@ -364,19 +324,19 @@
   .about-photo-wrap { position: relative; }
   .about-photo-frame {
     width: 100%; aspect-ratio: 3/4;
-    background: rgba(255,255,255,0.4);
+    background: rgba(22,30,42,0.7);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.8);
+    border: 1px solid rgba(200,168,85,0.2);
     border-radius: 24px;
     overflow: hidden;
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 8px 40px rgba(200,100,150,0.13), inset 0 1px 0 rgba(255,255,255,0.9);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
     position: relative; cursor: pointer;
   }
   .about-photo-frame::after {
-    content: '✿';
+    content: '◈';
     position: absolute; bottom: 14px; right: 16px;
-    color: var(--pink2); font-size: 1rem; opacity: 0.6;
+    color: var(--pink2); font-size: 1rem; opacity: 0.4;
     pointer-events: none;
   }
   .about-photo-frame img {
@@ -436,7 +396,6 @@
   }
   .tag:hover { background: rgba(201,160,220,0.25); border-color: var(--lilac); color: var(--text); }
 
-  /* ── SKILLS ── */
   #skills { background: var(--bg); }
 
   .skills-grid {
@@ -445,26 +404,26 @@
   }
 
   .skill-card {
-    background: rgba(255,255,255,0.5);
+    background: rgba(22,30,42,0.7);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.78);
+    border: 1px solid rgba(200,168,85,0.15);
     border-radius: 20px;
     padding: 1.8rem;
-    box-shadow: 0 4px 20px rgba(200,100,150,0.07);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     transition: all 0.35s ease;
     position: relative; overflow: hidden;
   }
   .skill-card::before {
     content: '';
     position: absolute; inset: 0; border-radius: 20px;
-    background: linear-gradient(135deg, rgba(232,120,154,0.06), rgba(201,160,220,0.06));
+    background: linear-gradient(135deg, rgba(200,168,85,0.05), rgba(143,175,212,0.05));
     opacity: 0; transition: opacity 0.35s;
   }
   .skill-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(200,100,150,0.15);
-    border-color: rgba(232,120,154,0.4);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    border-color: rgba(200,168,85,0.35);
   }
   .skill-card:hover::before { opacity: 1; }
 
@@ -479,16 +438,15 @@
   .skill-badge {
     font-family: 'Cormorant Garamond', serif;
     font-size: 0.9rem; color: var(--text-muted);
-    background: rgba(255,255,255,0.5);
-    border: 1px solid rgba(220,160,190,0.3);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(200,168,85,0.2);
     padding: 0.2rem 0.65rem; border-radius: 12px;
     transition: all 0.3s;
   }
-  .skill-badge:hover { color: var(--text); border-color: var(--border-bright); background: rgba(255,255,255,0.8); }
+  .skill-badge:hover { color: var(--text); border-color: var(--border-bright); background: rgba(200,168,85,0.08); }
 
-  /* ── EXPERIENCE ── */
   #experience {
-    background: linear-gradient(160deg, #fff8fb 0%, #f5eaf4 100%);
+    background: linear-gradient(160deg, #0f161f 0%, #111a26 100%);
     border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
   }
 
@@ -500,22 +458,22 @@
 
   .timeline-item { position: relative; margin-bottom: 2.5rem; }
   .timeline-item::before {
-    content: '✿';
+    content: '◆';
     position: absolute; left: -2.9rem; top: 0.15rem;
-    color: var(--pink2); font-size: 0.9rem;
+    color: var(--pink2); font-size: 0.7rem;
   }
 
   .timeline-card {
-    background: rgba(255,255,255,0.5);
+    background: rgba(22,30,42,0.7);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.78);
+    border: 1px solid rgba(200,168,85,0.15);
     border-radius: 18px; padding: 1.8rem;
-    box-shadow: 0 4px 20px rgba(200,100,150,0.07);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     transition: all 0.3s;
   }
   .timeline-card:hover {
-    border-color: rgba(232,120,154,0.4);
-    box-shadow: 0 8px 32px rgba(200,100,150,0.13);
+    border-color: rgba(200,168,85,0.4);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
     transform: translateX(4px);
   }
 
@@ -552,7 +510,6 @@
     color: var(--pink2); font-size: 1.1rem;
   }
 
-  /* ── PROJECTS ── */
   #projects { background: var(--bg); }
 
   .projects-grid {
@@ -561,18 +518,18 @@
   }
 
   .project-card {
-    background: rgba(255,255,255,0.5);
+    background: rgba(22,30,42,0.7);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.78);
+    border: 1px solid rgba(200,168,85,0.15);
     border-radius: 20px; overflow: hidden;
     display: flex; flex-direction: column;
-    box-shadow: 0 4px 20px rgba(200,100,150,0.07);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     transition: all 0.4s ease;
   }
   .project-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 16px 48px rgba(200,100,150,0.18);
-    border-color: rgba(232,120,154,0.4);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    border-color: rgba(200,168,85,0.35);
   }
 
   .project-banner { height: 5px; }
@@ -599,14 +556,13 @@
     background: rgba(224,192,240,0.15);
   }
 
-  /* ── RESEARCH CARD ── */
   .research-card {
-    background: rgba(255,255,255,0.5);
+    background: rgba(22,30,42,0.7);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.78);
+    border: 1px solid rgba(200,168,85,0.15);
     border-radius: 20px; padding: 2rem;
     margin-top: 2rem; position: relative; overflow: hidden;
-    box-shadow: 0 4px 24px rgba(200,100,150,0.09);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.25);
   }
   .research-card::before {
     content: '"';
@@ -630,24 +586,23 @@
     margin-bottom: 1rem; background: rgba(224,80,128,0.07);
   }
 
-  /* ── EDUCATION ── */
   #education {
-    background: linear-gradient(160deg, #fff8fb 0%, #f5eaf4 100%);
+    background: linear-gradient(160deg, #0f161f 0%, #111a26 100%);
     border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
   }
 
   .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.4rem; }
   .edu-card {
-    background: rgba(255,255,255,0.5);
+    background: rgba(22,30,42,0.7);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.78);
+    border: 1px solid rgba(200,168,85,0.15);
     border-radius: 20px; padding: 2rem;
-    box-shadow: 0 4px 20px rgba(200,100,150,0.07);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     transition: all 0.3s;
   }
   .edu-card:hover {
-    border-color: rgba(232,120,154,0.4);
-    box-shadow: 0 10px 36px rgba(200,100,150,0.14);
+    border-color: rgba(200,168,85,0.35);
+    box-shadow: 0 10px 36px rgba(0,0,0,0.35);
     transform: translateY(-3px);
   }
   .edu-card .edu-year {
@@ -664,21 +619,20 @@
   .edu-card .edu-score {
     font-family: 'Raleway', sans-serif;
     font-size: 0.66rem; font-weight: 600;
-    color: var(--rose); letter-spacing: 0.12em; text-transform: uppercase;
-    border: 1px solid rgba(224,80,128,0.35); display: inline-block;
+    color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase;
+    border: 1px solid rgba(200,168,85,0.35); display: inline-block;
     padding: 0.22rem 0.75rem; border-radius: 10px;
-    background: rgba(224,80,128,0.07);
+    background: rgba(200,168,85,0.08);
   }
 
-  /* ── CERT STRIP ── */
   .cert-strip {
-    background: rgba(255,255,255,0.45);
+    background: rgba(22,30,42,0.6);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.75);
+    border: 1px solid rgba(200,168,85,0.15);
     border-radius: 16px; padding: 1.8rem;
     display: flex; align-items: center; gap: 2rem;
     flex-wrap: wrap; justify-content: center;
-    box-shadow: 0 2px 16px rgba(200,100,150,0.06);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.2);
   }
   .cert-item {
     font-family: 'Raleway', sans-serif;
@@ -686,15 +640,9 @@
     letter-spacing: 0.1em; color: var(--text-muted);
     display: flex; align-items: center; gap: 0.55rem;
   }
-  .cert-item::before { content: '✿'; color: var(--pink2); font-size: 0.75rem; }
+  .cert-item::before { content: '◆'; color: var(--pink2); font-size: 0.5rem; }
 
-  /* ── CONTACT ── */
   #contact { background: var(--bg); }
-
-  .contact-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 3rem; align-items: start;
-  }
 
   .contact-info h3 {
     font-family: 'Raleway', sans-serif;
@@ -706,25 +654,25 @@
   .contact-item {
     display: flex; align-items: center; gap: 1rem;
     padding: 1rem 1.1rem;
-    background: rgba(255,255,255,0.5);
+    background: rgba(22,30,42,0.7);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.75);
+    border: 1px solid rgba(200,168,85,0.15);
     border-radius: 14px;
     margin-bottom: 0.75rem;
     text-decoration: none;
-    box-shadow: 0 2px 12px rgba(200,100,150,0.06);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
     transition: all 0.3s;
     color: var(--text-muted);
   }
   .contact-item:hover {
-    border-color: rgba(232,120,154,0.4);
+    border-color: rgba(200,168,85,0.4);
     transform: translateX(5px);
-    box-shadow: 0 6px 24px rgba(200,100,150,0.12);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.3);
     color: var(--text);
   }
   .contact-item-icon {
     width: 36px; height: 36px; border-radius: 10px;
-    background: linear-gradient(135deg, rgba(232,120,154,0.15), rgba(201,160,220,0.15));
+    background: linear-gradient(135deg, rgba(200,168,85,0.12), rgba(143,175,212,0.12));
     border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center;
     color: var(--pink); flex-shrink: 0; font-size: 1rem;
@@ -737,61 +685,8 @@
     color: var(--text-dim); display: block; margin-bottom: 0.1rem;
   }
 
-  /* ── CONTACT FORM ── */
-  .contact-form {
-    background: rgba(255,255,255,0.5);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.78);
-    border-radius: 20px; padding: 2rem;
-    display: flex; flex-direction: column; gap: 1rem;
-    box-shadow: 0 4px 24px rgba(200,100,150,0.08);
-  }
-  .contact-form h3 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.78rem; font-weight: 600;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--pink); margin-bottom: 0.5rem;
-  }
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-group label {
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.62rem; font-weight: 500;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--text-dim);
-  }
-  .form-group input,
-  .form-group textarea {
-    background: rgba(255,255,255,0.6);
-    border: 1px solid rgba(220,160,190,0.35);
-    border-radius: 12px;
-    color: var(--text);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-    outline: none; resize: vertical; width: 100%;
-    transition: all 0.3s;
-    backdrop-filter: blur(8px);
-  }
-  .form-group input:focus,
-  .form-group textarea:focus {
-    border-color: var(--pink2);
-    box-shadow: 0 0 0 3px rgba(232,120,154,0.12);
-    background: rgba(255,255,255,0.8);
-  }
-  .form-group textarea { min-height: 120px; }
-
-  .form-status {
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.78rem; padding: 0.7rem 1rem;
-    border-radius: 10px; text-align: center;
-    display: none;
-  }
-  .form-status.success { background: rgba(150,220,150,0.2); color: #3a7a3a; border: 1px solid rgba(100,180,100,0.3); display: block; }
-  .form-status.error   { background: rgba(224,80,128,0.1);  color: var(--rose); border: 1px solid rgba(224,80,128,0.3); display: block; }
-
-  /* ── FOOTER ── */
   footer {
-    background: rgba(255,245,250,0.8);
+    background: rgba(8,12,18,0.9);
     backdrop-filter: blur(12px);
     border-top: 1px solid var(--border);
     padding: 2.5rem; text-align: center;
@@ -813,28 +708,24 @@
   }
   .footer-links a:hover { color: var(--pink); }
 
-  /* ── REVEAL ── */
   .reveal {
     opacity: 0; transform: translateY(28px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--pink2); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
-  /* ── FILE INPUT HIDDEN ── */
   .photo-upload-input { display: none; }
 
-  /* ── MOBILE ── */
   @media (max-width: 768px) {
     nav { padding: 0 1.2rem; }
     .nav-links {
       display: none; flex-direction: column; position: fixed;
       top: 62px; left: 0; right: 0;
-      background: rgba(255,245,250,0.96);
+      background: rgba(10,14,20,0.97);
       backdrop-filter: blur(20px);
       padding: 1.5rem; border-bottom: 1px solid var(--border); gap: 0.2rem;
     }
@@ -843,7 +734,6 @@
     .hamburger { display: flex; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .about-photo-frame { aspect-ratio: 1; max-width: 260px; margin: 0 auto; }
-    .contact-grid { grid-template-columns: 1fr; }
     .section-inner { padding: 4rem 1.2rem; }
     .timeline { padding-left: 1.8rem; }
     .timeline-item::before { left: -2.2rem; }
@@ -852,8 +742,6 @@
 </style>
 </head>
 <body>
-
-<!-- FLOATING PETALS (created by JS) -->
 
 <!-- NAV -->
 <nav>
@@ -889,11 +777,10 @@
   </div>
   <p class="hero-tagline">AI & Machine Learning Engineer</p>
   <h1 class="hero-title">Shruthi S</h1>
-  <div class="divider-ornament"><span>✿</span></div>
+  <div class="divider-ornament"><span>◈</span></div>
   <p class="hero-desc">Crafting intelligent systems at the intersection of data, deep learning, and human-centred design. Pursuing mastery in AI & ML at Coimbatore Institute of Technology.</p>
   <div class="hero-cta">
     <a href="#projects" class="btn-primary">View My Work</a>
-    <a href="#contact" class="btn-secondary">Reach Out</a>
   </div>
   <p class="photo-upload-hint">↑ click the circle to upload your photo</p>
 </section>
@@ -1163,74 +1050,36 @@
     <p class="section-subhead">Open the Gates</p>
     <h2 class="section-heading">Contact</h2>
     <div class="gothic-rule"><span>✿</span></div>
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <h3>Reach Me Through</h3>
-        <a href="mailto:shruthisuresh4523@gmail.com" class="contact-item">
-          <div class="contact-item-icon">✉</div>
-          <div class="contact-item-text">
-            <span class="contact-item-label">Email</span>
-            shruthisuresh4523@gmail.com
-          </div>
-        </a>
-        <a href="mailto:shruthis2022aiml@citchennai.net" class="contact-item">
-          <div class="contact-item-icon">✉</div>
-          <div class="contact-item-text">
-            <span class="contact-item-label">Alt Email</span>
-            shruthis2022aiml@citchennai.net
-          </div>
-        </a>
-        <a href="tel:+919442238763" class="contact-item">
-          <div class="contact-item-icon">☎</div>
-          <div class="contact-item-text">
-            <span class="contact-item-label">Phone</span>
-            +91 9442238763
-          </div>
-        </a>
-        <a href="https://linkedin.com/in/shruthisuresh45" target="_blank" class="contact-item">
-          <div class="contact-item-icon">in</div>
-          <div class="contact-item-text">
-            <span class="contact-item-label">LinkedIn</span>
-            linkedin.com/in/shruthisuresh45
-          </div>
-        </a>
-        <a href="https://github.com/RasiShruthisuresh" target="_blank" class="contact-item">
-          <div class="contact-item-icon">⌥</div>
-          <div class="contact-item-text">
-            <span class="contact-item-label">GitHub</span>
-            github.com/RasiShruthisuresh
-          </div>
-        </a>
-      </div>
-
-      <!-- ── CONTACT FORM via Formspree ── -->
-      <!-- 
-        HOW TO ACTIVATE:
-        1. Go to https://formspree.io and sign up (free)
-        2. Create a new form → copy your unique form ID (looks like "xpwzabcd")
-        3. Replace YOUR_FORMSPREE_ID below with that ID
-        Done! Every submission will be emailed to you.
-      -->
-      <div class="contact-form reveal" id="contactFormWrap">
-        <h3>Send a Message</h3>
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" id="cfName" placeholder="How shall I address thee?" required/>
+    <div class="contact-info reveal">
+      <h3>Reach Me Through</h3>
+      <a href="mailto:shruthisuresh4523@gmail.com" class="contact-item">
+        <div class="contact-item-icon">✉</div>
+        <div class="contact-item-text">
+          <span class="contact-item-label">Email</span>
+          shruthisuresh4523@gmail.com
         </div>
-        <div class="form-group">
-          <label>Your Email</label>
-          <input type="email" id="cfEmail" placeholder="your@email.com" required/>
+      </a>
+      <a href="tel:+919442238763" class="contact-item">
+        <div class="contact-item-icon">☎</div>
+        <div class="contact-item-text">
+          <span class="contact-item-label">Phone</span>
+          +91 9442238763
         </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea id="cfMessage" placeholder="What brings you to my domain?" required></textarea>
+      </a>
+      <a href="https://linkedin.com/in/shruthisuresh45" target="_blank" class="contact-item">
+        <div class="contact-item-icon">in</div>
+        <div class="contact-item-text">
+          <span class="contact-item-label">LinkedIn</span>
+          linkedin.com/in/shruthisuresh45
         </div>
-        <div id="formStatus" class="form-status"></div>
-        <button class="btn-primary" id="cfSubmit" onclick="submitContactForm()" style="align-self:flex-start; margin-top:0.3rem;">
-          Send Message 🌸
-        </button>
-      </div>
-
+      </a>
+      <a href="https://github.com/RasiShruthisuresh" target="_blank" class="contact-item">
+        <div class="contact-item-icon">⌥</div>
+        <div class="contact-item-text">
+          <span class="contact-item-label">GitHub</span>
+          github.com/RasiShruthisuresh
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -1247,9 +1096,7 @@
 </footer>
 
 <script>
-// ════════════════════════════════════════════════
-//  1. FLOATING PETALS
-// ════════════════════════════════════════════════
+// FLOATING PETALS
 const petalColors = ['#f4a6bf','#e8789a','#e0c4f0','#c9a0dc','#f9d4e2','#d4b8e0'];
 for (let i = 0; i < 18; i++) {
   const p = document.createElement('div');
@@ -1266,9 +1113,7 @@ for (let i = 0; i < 18; i++) {
   document.body.appendChild(p);
 }
 
-// ════════════════════════════════════════════════
-//  2. PHOTO UPLOAD + LOCALSTORAGE PERSISTENCE
-// ════════════════════════════════════════════════
+// PHOTO UPLOAD + LOCALSTORAGE PERSISTENCE
 const PHOTO_KEY = 'shruthiPortfolioPhoto';
 
 function applyPhoto(dataUrl) {
@@ -1289,7 +1134,6 @@ function applyPhoto(dataUrl) {
   }
 }
 
-// Restore photo from localStorage on page load
 (function restorePhoto() {
   try {
     const saved = localStorage.getItem(PHOTO_KEY);
@@ -1313,72 +1157,13 @@ function handlePhotoFile(file) {
 document.getElementById('heroPhotoInput').addEventListener('change', e => handlePhotoFile(e.target.files[0]));
 document.getElementById('aboutPhotoInput').addEventListener('change', e => handlePhotoFile(e.target.files[0]));
 
-// ════════════════════════════════════════════════
-//  3. CONTACT FORM (Formspree)
-// ════════════════════════════════════════════════
-async function submitContactForm() {
-  const FORMSPREE_ID = 'xpqkwrvg'; // ← Replace with your Formspree ID
-
-  const name    = document.getElementById('cfName').value.trim();
-  const email   = document.getElementById('cfEmail').value.trim();
-  const message = document.getElementById('cfMessage').value.trim();
-  const status  = document.getElementById('formStatus');
-  const btn     = document.getElementById('cfSubmit');
-
-  // basic validation
-  if (!name || !email || !message) {
-    status.className = 'form-status error';
-    status.textContent = 'Please fill in all fields 🌸';
-    return;
-  }
-
-  // if not yet configured, show helpful message
-  if (FORMSPREE_ID === 'xpqkwrvg') {
-    status.className = 'form-status error';
-    status.textContent = 'To activate email delivery: sign up at formspree.io, create a form, and paste your ID in the script section of this file.';
-    return;
-  }
-
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-  status.className = 'form-status';
-  status.style.display = 'none';
-
-  try {
-    const res = await fetch(`https://formspree.io/f/${xpqkwrvg}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, email, message })
-    });
-    if (res.ok) {
-      status.className = 'form-status success';
-      status.textContent = 'Message sent! I will get back to you soon 🌸';
-      document.getElementById('cfName').value = '';
-      document.getElementById('cfEmail').value = '';
-      document.getElementById('cfMessage').value = '';
-    } else {
-      throw new Error('Server error');
-    }
-  } catch(err) {
-    status.className = 'form-status error';
-    status.textContent = 'Something went wrong. Please try emailing directly.';
-  }
-
-  btn.disabled = false;
-  btn.textContent = 'Send Message 🌸';
-}
-
-// ════════════════════════════════════════════════
-//  4. NAV HAMBURGER
-// ════════════════════════════════════════════════
+// NAV HAMBURGER
 const ham = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 ham.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-// ════════════════════════════════════════════════
-//  5. ACTIVE NAV HIGHLIGHT
-// ════════════════════════════════════════════════
+// ACTIVE NAV HIGHLIGHT
 const sections = document.querySelectorAll('section[id]');
 const links = document.querySelectorAll('.nav-links a');
 const navObs = new IntersectionObserver((entries) => {
@@ -1392,9 +1177,7 @@ const navObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 sections.forEach(s => navObs.observe(s));
 
-// ════════════════════════════════════════════════
-//  6. SCROLL REVEAL
-// ════════════════════════════════════════════════
+// SCROLL REVEAL
 const reveals = document.querySelectorAll('.reveal');
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
