@@ -127,6 +127,7 @@
     position: relative; overflow: hidden;
   }
 
+  /* FIX: pointer-events:none so decorative rings don't block clicks on the CTA button */
   #home::before {
     content: '';
     position: absolute;
@@ -136,6 +137,7 @@
     top: 50%; left: 50%;
     transform: translate(-50%,-50%);
     animation: pulseRing 7s ease-in-out infinite;
+    pointer-events: none;
   }
   #home::after {
     content: '';
@@ -146,6 +148,7 @@
     top: 50%; left: 50%;
     transform: translate(-50%,-50%);
     animation: pulseRing 9s 1s ease-in-out infinite;
+    pointer-events: none;
   }
   @keyframes pulseRing {
     0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
@@ -181,7 +184,6 @@
     overflow: hidden;
     background: linear-gradient(135deg, #1e2836, #2a3848);
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
   }
 
   .hero-photo-placeholder {
@@ -197,18 +199,9 @@
   .hero-photo-placeholder svg { opacity: 0.45; }
 
   #heroPhoto {
-    display: none;
     position: absolute; inset: 0;
     width: 100%; height: 100%;
     object-fit: cover; border-radius: 50%;
-  }
-
-  .photo-upload-hint {
-    font-size: 0.68rem; color: var(--text-dim);
-    margin-top: 0.4rem; font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
-    animation: fadeUp 1s 1.1s ease both;
-    opacity: 0;
   }
 
   @keyframes fadeDown { from { opacity: 0; transform: translateY(-28px); } to { opacity: 1; transform: translateY(0); } }
@@ -261,6 +254,7 @@
     display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
     margin-top: 1.8rem;
     animation: fadeUp 1s 0.9s ease both; opacity: 0;
+    position: relative; z-index: 3; /* sit above decorative rings */
   }
 
   .btn-primary {
@@ -275,6 +269,7 @@
     display: inline-block;
     transition: all 0.3s;
     box-shadow: 0 4px 20px rgba(232,120,154,0.35);
+    position: relative; z-index: 3;
   }
   .btn-primary:hover {
     transform: translateY(-2px);
@@ -331,7 +326,7 @@
     overflow: hidden;
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
-    position: relative; cursor: pointer;
+    position: relative;
   }
   .about-photo-frame::after {
     content: '◈';
@@ -718,8 +713,6 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
-  .photo-upload-input { display: none; }
-
   @media (max-width: 768px) {
     nav { padding: 0 1.2rem; }
     .nav-links {
@@ -763,17 +756,25 @@
 <!-- HERO -->
 <section id="home">
   <div class="hero-photo-wrap">
-    <label class="photo-upload-input" for="heroPhotoInput" title="Click to upload your photo" style="display:block; position:absolute; inset:0; z-index:4; cursor:pointer;"></label>
-    <div class="hero-photo-inner" id="heroPhotoInner">
+    <div class="hero-photo-inner">
+      <!--
+        ========================================================================
+        TO SET YOUR PHOTO:
+        Replace the src="" below with the path to your photo file.
+        Example:  <img id="heroPhoto" src="shruthi.jpg" alt="Shruthi S"/>
+
+        Place your image file in the same folder as this HTML file.
+        If no src is given, a placeholder is shown.
+        ========================================================================
+      -->
+      <img id="heroPhoto" src="Shruthi S.JPEG" alt="Shruthi S" onerror="this.style.display='none'; document.getElementById('heroPhotoPlaceholder').style.display='flex';"/>
       <div class="hero-photo-placeholder" id="heroPhotoPlaceholder">
         <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
           <circle cx="12" cy="8" r="4"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
         </svg>
-        <span>Add Photo</span>
+        <span>Shruthi S</span>
       </div>
-      <img id="heroPhoto" src="" alt="Shruthi S"/>
     </div>
-    <input type="file" id="heroPhotoInput" class="photo-upload-input" accept="image/*"/>
   </div>
   <p class="hero-tagline">AI & Machine Learning Engineer</p>
   <h1 class="hero-title">Shruthi S</h1>
@@ -782,7 +783,6 @@
   <div class="hero-cta">
     <a href="#projects" class="btn-primary">View My Work</a>
   </div>
-  <p class="photo-upload-hint">↑ click the circle to upload your photo</p>
 </section>
 
 <!-- ABOUT -->
@@ -793,17 +793,21 @@
     <div class="gothic-rule"><span>✿</span></div>
     <div class="about-grid">
       <div class="about-photo-wrap reveal">
-        <div class="about-photo-frame" id="aboutPhotoFrame">
-          <label for="aboutPhotoInput" style="cursor:pointer; width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:absolute; inset:0;">
-            <div class="about-photo-placeholder" id="aboutPhotoPlaceholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="opacity:0.3">
-                <circle cx="12" cy="8" r="4"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
-              </svg>
-              <span>Click to add photo</span>
-            </div>
-            <img id="aboutPhoto" src="" alt="" style="display:none; width:100%; height:100%; object-fit:cover; position:absolute; inset:0; border-radius:24px;"/>
-          </label>
-          <input type="file" id="aboutPhotoInput" class="photo-upload-input" accept="image/*"/>
+        <div class="about-photo-frame">
+          <!--
+            ========================================================================
+            TO SET YOUR ABOUT-SECTION PHOTO:
+            Replace the src="" below with the path to your photo.
+            Example: <img id="aboutPhoto" src="shruthi.jpg" alt="Shruthi S"/>
+            ========================================================================
+          -->
+          <img id="aboutPhoto" src="Shruthi S.JPEG" alt="Shruthi S" onerror="this.style.display='none'; document.getElementById('aboutPhotoPlaceholder').style.display='flex';"/>
+          <div class="about-photo-placeholder" id="aboutPhotoPlaceholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="opacity:0.3">
+              <circle cx="12" cy="8" r="4"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+            </svg>
+            <span>Shruthi S</span>
+          </div>
         </div>
         <div class="about-stats">
           <div class="stat-pill"><span class="num">7.33</span><span class="label">CGPA</span></div>
@@ -1052,7 +1056,7 @@
     <div class="gothic-rule"><span>✿</span></div>
     <div class="contact-info reveal">
       <h3>Reach Me Through</h3>
-      <a href="mailto:shruthisuresh4523@gmail.com" class="contact-item">
+      <a href="mailto:shruthisuresh2704@gmail.com" class="contact-item">
         <div class="contact-item-icon">✉</div>
         <div class="contact-item-text">
           <span class="contact-item-label">Email</span>
@@ -1096,7 +1100,7 @@
 </footer>
 
 <script>
-// FLOATING PETALS
+// FLOATING PETALS (decorative)
 const petalColors = ['#f4a6bf','#e8789a','#e0c4f0','#c9a0dc','#f9d4e2','#d4b8e0'];
 for (let i = 0; i < 18; i++) {
   const p = document.createElement('div');
@@ -1112,50 +1116,6 @@ for (let i = 0; i < 18; i++) {
   `;
   document.body.appendChild(p);
 }
-
-// PHOTO UPLOAD + LOCALSTORAGE PERSISTENCE
-const PHOTO_KEY = 'shruthiPortfolioPhoto';
-
-function applyPhoto(dataUrl) {
-  const heroPhoto = document.getElementById('heroPhoto');
-  const heroPH    = document.getElementById('heroPhotoPlaceholder');
-  const aboutPhoto = document.getElementById('aboutPhoto');
-  const aboutPH    = document.getElementById('aboutPhotoPlaceholder');
-
-  if (heroPhoto) {
-    heroPhoto.src = dataUrl;
-    heroPhoto.style.display = 'block';
-    if (heroPH) heroPH.style.display = 'none';
-  }
-  if (aboutPhoto) {
-    aboutPhoto.src = dataUrl;
-    aboutPhoto.style.display = 'block';
-    if (aboutPH) aboutPH.style.display = 'none';
-  }
-}
-
-(function restorePhoto() {
-  try {
-    const saved = localStorage.getItem(PHOTO_KEY);
-    if (saved) applyPhoto(saved);
-  } catch(e) {}
-})();
-
-function handlePhotoFile(file) {
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (ev) => {
-    const dataUrl = ev.target.result;
-    applyPhoto(dataUrl);
-    try { localStorage.setItem(PHOTO_KEY, dataUrl); } catch(e) {
-      console.warn('Photo too large to store in localStorage:', e);
-    }
-  };
-  reader.readAsDataURL(file);
-}
-
-document.getElementById('heroPhotoInput').addEventListener('change', e => handlePhotoFile(e.target.files[0]));
-document.getElementById('aboutPhotoInput').addEventListener('change', e => handlePhotoFile(e.target.files[0]));
 
 // NAV HAMBURGER
 const ham = document.getElementById('hamburger');
@@ -1188,6 +1148,16 @@ const revealObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 reveals.forEach(r => revealObs.observe(r));
+
+// Hide empty photos on load (if src is empty, show placeholder)
+window.addEventListener('DOMContentLoaded', () => {
+  ['heroPhoto','aboutPhoto'].forEach(id => {
+    const img = document.getElementById(id);
+    if (img && (!img.getAttribute('src') || img.getAttribute('src').trim() === '')) {
+      img.style.display = 'none';
+    }
+  });
+});
 </script>
 </body>
 </html>
